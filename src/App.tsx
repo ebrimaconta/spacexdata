@@ -6,7 +6,7 @@ import AppContext from './context/context';
 
 import './assets/dist/tailwind.css';
 function App() {
-  const [data, setData] = React.useState<any>([]);
+  const [data, setData] = useState([]);
 
   let ajaxString = `https://api.spacexdata.com/v3/launches`;
   const requestOptions = {
@@ -19,7 +19,8 @@ function App() {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       } else {
-        const fetchresponse = await response.text();
+        const fetchresponse = await response.json();
+        console.log(fetchresponse);
         setData(fetchresponse);
       }
     } catch (e) {
@@ -36,7 +37,7 @@ function App() {
         lunches: data,
       }}
     >
-      <div className='App'>
+      <div id='app' className='App'>
         <Main />
       </div>
     </AppContext.Provider>

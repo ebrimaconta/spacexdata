@@ -1,5 +1,6 @@
 module.exports = {
     purge: [],
+    important: '#app',
     theme: {
         extend: {
             colors: {
